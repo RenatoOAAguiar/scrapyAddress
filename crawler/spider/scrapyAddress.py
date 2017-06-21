@@ -24,6 +24,6 @@ class SpiderAddress(Spider):
     def parse(self, response):
         for title in response.css('body'):
             yield {
-            'endereco': title.css('//body/text()').extract()
+            'endereco': title.css('body ::text').extract()
             }
         pass
