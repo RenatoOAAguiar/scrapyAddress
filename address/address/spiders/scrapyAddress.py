@@ -20,7 +20,6 @@ class SpiderAddress(Spider):
         pageUrls = searchResultPages(keyword, self.searchEngine , 1)
         print(pageUrls)
         for url in pageUrls:
-            print("---------------URL--------------------"+url)
             self.start_urls.append(url)
 
     def parse(self, response):
