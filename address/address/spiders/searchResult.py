@@ -1,4 +1,4 @@
-from searchEngine import SearchEngines
+from .searchEngine import SearchEngines
 
 
 class searchResultPages:
