@@ -19,7 +19,7 @@ class searchResultPages:
         return  self
 
     def _currentUrl(self):
-        return self.searchEngineUrl.format(self.keyword)
+        return self.searchEngineUrl.format(self.keyword, str(self.currentPage  * 10))
 
     def next(self):
         if self.currentPage < self.totalPage:
