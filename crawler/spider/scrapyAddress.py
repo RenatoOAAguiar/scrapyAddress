@@ -17,7 +17,7 @@ class SpiderAddress(Spider):
         self.keyword = keyword.lower()
         self.searchEngine = 'google'
         self.selector = SearchEngineResult[self.searchEngine]
-        pageUrls = searchResultPages(keyword, self.searchEngine , 1)
+        pageUrls = searchResultPages(keyword, self.searchEngine , 2)
         for url in pageUrls:
             print(url)
             self.start_urls.append(url)
@@ -25,5 +25,6 @@ class SpiderAddress(Spider):
     def parse(self, response):
         for title in response.css('body'):
             yield {
-            'endereco': title.css('body ::text').extract()
+            'endereco': title.css('//body/text()').extract()
             }
+        pass
