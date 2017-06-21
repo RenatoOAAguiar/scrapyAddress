@@ -17,6 +17,7 @@ class SpiderAddress(Spider):
         self.searchEngine = 'google'
         self.selector = SearchEngineResult[self.searchEngine]
         pageUrls = searchResultPages(keyword, self.searchEngine , 2)
+        print(pageUrls)
         for url in pageUrls:
             print("---------------URL--------------------"+url)
             self.start_urls.append(url)
