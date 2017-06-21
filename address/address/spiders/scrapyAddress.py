@@ -24,9 +24,9 @@ class SpiderAddress(Spider):
             self.start_urls.append(url)
 
     def parse(self, response):
-        for url in Selector(response).xpath('//h3/a/href').extract():
-            print(url)
-            yield Request(url, callback=self.parseAddress)
+        for url in Selector(response).xpath('//h3/a/@href').extract():
+            print(url.replace('/url?q=',''))
+            yield Request(url.replace('/url?q=',''), callback=self.parseAddress)
     
     def parseAddress(self, response):
         for data in Selector(response).xpath('//body/text()').extract():
