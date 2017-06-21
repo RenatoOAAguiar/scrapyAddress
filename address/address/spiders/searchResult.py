@@ -21,7 +21,7 @@ class searchResultPages:
     def _currentUrl(self):
         return self.searchEngineUrl.format(self.keyword, str(self.currentPage  * 10))
 
-    def next(self):
+    def __next__(self):
         if self.currentPage < self.totalPage:
             url =  self._currentUrl()
             self.currentPage = self.currentPage + 1
