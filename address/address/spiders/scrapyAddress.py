@@ -3,6 +3,7 @@ from scrapy.spiders import Spider
 from scrapy.selector import  Selector
 from searchResult import searchResultPages
 from searchEngine import SearchEngineResult
+from scrapy.http import Request
 
 class SpiderAddress(Spider):
     name = 'SpiderAddress'
@@ -23,10 +24,9 @@ class SpiderAddress(Spider):
             self.start_urls.append(url)
 
     def parse(self, response):
-        #for body in Selector(response).xpath('//body//text()').extract():
-        #    yield {'body':body}
-        for title in response.css('body'):
-            yield {
-            'body': title.css('body ::text').extract()
-            }
-        pass
+        for url in Selector(response).xpath('//h3/a/@href').extract():
+            yield Request(url, callback=self.parseAddress)
+    
+    def parseAddress(self, response):
+        for data in Selector(response).xpath('//body/text()').extract():
+            yield {'data':data}
