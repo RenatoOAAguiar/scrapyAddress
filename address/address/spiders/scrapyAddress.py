@@ -30,4 +30,5 @@ class SpiderAddress(Spider):
     
     def parseAddress(self, response):
         for data in Selector(response).xpath('//body/text()').extract():
+            print("$$$$$$$$$$$$$" + data)
             yield {'data':data}
