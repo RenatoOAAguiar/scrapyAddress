@@ -29,5 +29,5 @@ class SpiderAddress(Spider):
             yield Request(string, callback=self.parseAddress)
     
     def parseAddress(self, response):
-        for data in Selector(response).xpath('//body//text()').extract():
-            yield {'data':data}
+        data = Selector(response).xpath('//body//text()').extract_first()
+        yield {'data':data}
