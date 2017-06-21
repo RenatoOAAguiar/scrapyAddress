@@ -23,6 +23,10 @@ class SpiderAddress(Spider):
             self.start_urls.append(url)
 
     def parse(self, response):
-        for body in Selector(response).xpath('//body/text()').extract():
+        for body in Selector(response).xpath('//body//text()').extract():
             yield {'body':body}
+        for title in response.css('body'):
+            yield {
+            'body': title.css('body ::text').extract()
+            }
         pass
