@@ -1,3 +1,4 @@
+__autor__ = 'Renato'
 from scrapy.spiders import Spider
 from scrapy.selector import  Selector
 from searchResult import searchResultPages
@@ -11,7 +12,7 @@ class SpiderAddress(Spider):
     searchEngine = None
     selector = None
 
-    def __init__(self, keyword, results,  *args, **kwargs):
+    def __init__(self, keyword, *args, **kwargs):
         super(SpiderAddress, self).__init__(*args, **kwargs)
         self.keyword = keyword.lower()
         self.searchEngine = 'google'
@@ -26,6 +27,3 @@ class SpiderAddress(Spider):
             yield {
             'endereco': title.css('body ::text').extract()
             }
-
-        for next_page in response.css('div > a'):
-            yield response.follow(next_page, self.parse)
