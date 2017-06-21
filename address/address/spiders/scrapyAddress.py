@@ -16,15 +16,15 @@ class SpiderAddress(Spider):
         self.keyword = keyword.lower()
         self.searchEngine = 'google'
         self.selector = SearchEngineResult[self.searchEngine]
-        pageUrls = searchResultPages(keyword, self.searchEngine , 2)
+        pageUrls = searchResultPages(keyword, self.searchEngine , 1)
         print(pageUrls)
         for url in pageUrls:
             print("---------------URL--------------------"+url)
             self.start_urls.append(url)
 
     def parse(self, response):
-        for body in Selector(response).xpath('//body//text()').extract():
-            yield {'body':body}
+        #for body in Selector(response).xpath('//body//text()').extract():
+        #    yield {'body':body}
         for title in response.css('body'):
             yield {
             'body': title.css('body ::text').extract()
