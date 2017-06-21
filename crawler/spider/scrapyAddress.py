@@ -18,7 +18,7 @@ class SpiderAddress(Spider):
         self.selector = SearchEngineResult[self.searchEngine]
         pageUrls = searchResultPages(keyword, self.searchEngine , 2)
         for url in pageUrls:
-            print(url)
+            print("---------------URL--------------------"+url)
             self.start_urls.append(url)
 
     def parse(self, response):
