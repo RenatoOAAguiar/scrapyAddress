@@ -7,7 +7,6 @@ from searchEngine import SearchEngineResult
 class SpiderAddress(Spider):
     name = 'SpiderAddress'
     start_urls = []
-    allowed_domains = ['google.com.br', 'google.com']
     keyword = None
     searchEngine = None
     selector = None
