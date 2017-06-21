@@ -1,8 +1,8 @@
 __autor__ = 'Renato'
 from scrapy.spiders import Spider
 from scrapy.selector import  Selector
-from searchResult import searchResultPages
-from searchEngine import SearchEngineResult
+from .searchResult import searchResultPages
+from .searchEngine import SearchEngineResult
 from scrapy.http import Request
 
 class SpiderAddress(Spider):
