@@ -1,5 +1,5 @@
 SearchEngines = {
-    'google': 'https://www.google.com/search?q={0}&start={1}'
+    'google': 'https://www.google.com.br/search?q={0}&start={1}'
 }
 
 
